@@ -438,7 +438,7 @@ $ sudo firewall-cmd --permanent --zone=trusted --add-service=openvpn
 $ sudo firewall-cmd --permanent --add-service=openvpn
 $ sudo firewall-cmd --permanent --zone=trusted --add-interface=tun0
 $ sudo firewall-cmd --permanent --add-masquerade
-$ sudo SERVERIP=$(ip route get 1.1.1.1 | awk 'NR==1 {print $(NF-2)}')
+$ SERVERIP=$(ip route get 1.1.1.1 | awk 'NR==1 {print $(NF-2)}')
 $ sudo firewall-cmd --permanent --direct --passthrough ipv4 -t nat -A POSTROUTING -s  10.100.10.0/24 -o $SERVERIP -j MASQUERADE // change 10.100.10.0/24 to your physical network
 $ sudo firewall-cmd --reload
 // Find your Modem , access and Open Port ( or call is Port Forwarding ) 1194 from your OpenVPN Server to Internet ( ex: IPWAN 111.111.111.33:1194--->10.100.10.100:1194 )
